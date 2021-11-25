@@ -1,0 +1,29 @@
+package com.controller;
+
+import com.model.Login;
+import com.model.User;
+import com.model.UserDao;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class UserController {
+    @GetMapping("/home")
+    public ModelAndView getHome(){
+        ModelAndView modelAndView = new ModelAndView("home","login",new Login());
+        return modelAndView;
+    }
+    @PostMapping("/login")
+    public ModelAndView login(Login login){
+        User user = UserDao.checkLogin(login);
+        if (user == null){
+            ModelAndView modelAndView = new ModelAndView("orr");
+            return modelAndView;
+        }
+        ModelAndView modelAndView = new ModelAndView("user");
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+}

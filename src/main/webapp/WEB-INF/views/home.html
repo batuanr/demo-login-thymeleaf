@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap 3 simple login form free template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .login {
+            background: linear-gradient(to bottom, #0099ff 0%, #fff 100%);
+            height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .account-login {
+            width: 500px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+        }
+        p a {
+            padding-left: 2px;
+        }
+        .account-login h1 {
+            font-size: 25px;
+            text-align: left;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .login-form input {
+            width: 100%;
+            position: relative;
+            border-bottom: 1px solid #a39e9e;
+            padding: 0;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            box-shadow: none;
+            height: 63px;
+            border-radius: 0px;
+        }
+        .login-form {
+            background: #fff;
+            float: left;
+            width: 100%;
+            padding: 40px;
+            border-radius: 5px;
+        }
+        button.btn {
+            width: 100%;
+            background: #009cff;
+            font-size: 20px;
+            padding: 11px;
+            color: #fff;
+            border: 0px;
+            margin: 10px 0px 20px;
+        }
+        .btn:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <div class="account-login">
+        <h1>Account Login</h1>
+        <form th:action="@{/login}" th:object="${login}" class="login-form" method="post">
+            <div class="form-group">
+                <input type="text" th:field="*{account}" placeholder="User Name" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" th:field="*{password}" placeholder="Password"  class="form-control">
+            </div>
+            <div class="remember">
+                <label class="custom-checkbox">Remember me
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <a href="#" class="pull-right">Forgot Password?</a>
+            </div>
+            <button class="btn">Login</button>
+            <p>Are you new?<a href="#">Sign Up</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
